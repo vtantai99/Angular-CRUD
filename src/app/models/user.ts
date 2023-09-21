@@ -8,10 +8,18 @@ export interface User {
   name: string;
   age: number;
   status: UserStatus;
-  createdAt: string;
+  dateOfBirth: string | number;
+  createdAt: string | number;
+  isEdit: boolean;
 }
 
 export interface UserColumn {
   key: string;
   label: string;
+  type: string;
+}
+
+export interface UserStatusOption {
+  value: string;
+  viewValue: string;
 }

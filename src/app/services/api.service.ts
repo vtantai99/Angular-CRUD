@@ -11,12 +11,12 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getUserList(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/users`)
+  getUserList(): Observable<Omit<User, 'isEdit'>[]> {
+    return this.http.get<Omit<User, 'isEdit'>[]>(`${this.apiUrl}/users`)
   }
 
-  createUser(item: User): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/posts`, item);
+  createUser(payload: Omit<User, 'isEdit' | 'id'>): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/users`, payload);
   }
 
   // updateItem(itemId: number, updatedItem: any): Observable<any> {
