@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/models/user';
+import { User, UserPayload } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +11,19 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getUserList(): Observable<Omit<User, 'isEdit'>[]> {
-    return this.http.get<Omit<User, 'isEdit'>[]>(`${this.apiUrl}/users`)
+  getUserList(): Observable<Omit<UserPayload, 'isEdit'>[]> {
+    return this.http.get<Omit<UserPayload, 'isEdit'>[]>(`${this.apiUrl}/users`)
   }
 
-  createUser(payload: Omit<User, 'isEdit' | 'id'>): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/users`, payload);
+  createUser(user: UserPayload): Observable<UserPayload> {
+    return this.http.post<UserPayload>(`${this.apiUrl}/users`, user);
   }
 
-  // updateItem(itemId: number, updatedItem: any): Observable<any> {
-  //   return this.http.put<any>(`${this.apiUrl}/items/${itemId}`, updatedItem);
-  // }
+  updateUser(user: Partial<UserPayload>): Observable<UserPayload> {
+    return this.http.put<UserPayload>(`${this.apiUrl}/users/${user.id}`, user);
+  }
 
-  // deleteItem(itemId: number): Observable<any> {
-  //   return this.http.delete<any>(`${this.apiUrl}/items/${itemId}`);
-  // }
+  deleteUser(userId: UserPayload['id']): Observable<UserPayload> {
+    return this.http.delete<UserPayload>(`${this.apiUrl}/users/${userId}`);
+  }
 }

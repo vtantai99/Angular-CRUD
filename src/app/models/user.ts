@@ -4,14 +4,19 @@ export enum UserStatus {
 }
 
 export interface User {
-  id?: string;
+  id: string;
   name: string;
   age: number;
   status: UserStatus;
-  dateOfBirth: string | number;
+  dateOfBirth: string | number | any;
   createdAt: string | number;
+  isAdding: boolean;
+  isEditing: boolean;
+  isDeleting: boolean;
   isEdit: boolean;
 }
+
+export type UserPayload = Pick<User, 'id' | 'name' | 'age' | 'status' | 'dateOfBirth' | 'createdAt'>
 
 export interface UserColumn {
   key: string;

@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [AppComponent, UserListComponent],
@@ -37,7 +38,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatNativeDateModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatChipsModule
+    MatChipsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],
